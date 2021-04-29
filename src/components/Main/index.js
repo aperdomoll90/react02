@@ -1,7 +1,17 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 function Main(){
-return<p>Main</p>
+const [counter,setCounter] = useState(0)
+    
+return (
+    <>
+    <p>The Count is {counter}.</p>
+    <button onClick={()=> setCounter(counter+1)}>+ 1</button>
+    <button onClick={()=> setCounter(0)}>Reset</button>
+    <button onClick={()=> setCounter(Math.max(0,counter-1))}>- 1</button>
+    
+    </>
+)
 }
 
 export default Main

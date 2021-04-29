@@ -16,7 +16,9 @@ function App() {
 
 
       </header>
+      <section className="main-section">
       <Main/>
+      </section>
       <Footer/>
     </div>
   );
