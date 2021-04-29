@@ -1,8 +1,10 @@
+import './App.css';
 import React,{useState} from 'react'
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import './App.css';
+import Coffees from './components/Coffees';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -18,6 +20,9 @@ function App() {
       </header>
       <section className="main-section">
       <Main/>
+      </section>
+      <section>
+        <Coffees/>
       </section>
       <Footer/>
     </div>
