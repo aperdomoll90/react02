@@ -53,3 +53,14 @@
   flex-direction: column;
 }
 
+nav > a {
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav > a:hover, nav > a.active {
+  text-decoration: underline;
+  color: yellow;
+}
