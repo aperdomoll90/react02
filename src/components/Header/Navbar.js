@@ -5,7 +5,7 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
   return (
       <nav>
       <Link to="/">Home</Link>
-      <Link to="/coffee">Coffees</Link>
+      <Link to="/coffees">Coffees</Link>
     <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
       {isLoggedIn ? 'Logout' : 'Login'}
     </button>

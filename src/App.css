@@ -46,11 +46,12 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
+  flex-direction:row;
 }
 
 .allCoffees > li > div {
   display: flex;
-  flex-direction: column;
+  flex-direction:row;
 }
 
 nav > a {

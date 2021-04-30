@@ -17,7 +17,7 @@ class Coffees extends React.Component{
 
   handleButtonClick(type){
     this.setState({ coffees: null})
-    fetch('https://api.sampleapis.com/coffee/${type')
+    fetch(`https://api.sampleapis.com/coffee/${type}`)
       .then(response => response.json())
       .then(data => this.setState({ coffees: data}))
       .catch(err => console.log(err))
@@ -30,7 +30,7 @@ class Coffees extends React.Component{
         <h2>Coffees:</h2>
         <button onClick={()=> this.handleButtonClick('hot')}>Hot</button>
         <button onClick={()=> this.handleButtonClick('iced')}>Iced</button>
-        {coffees.map(coffee => {
+        {!coffees ? <p>Loading...</p> : coffees.map(coffee => {
           return <SingleCoffee key={coffee.id} coffee={coffee} />
         })}
       </>

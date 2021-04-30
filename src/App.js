@@ -5,6 +5,8 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import Coffees from './components/Coffees';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import  CoffeeDetails from './components/Coffees/CoffeeDetails'
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,14 +18,10 @@ function App() {
         </header>
         <section className="main-section">
           <Switch>
-
-          <Route path="/coffee">
-              <Coffees />
-            </Route>
-
-            <Route path="/">
-              <Main />
-            </Route>
+           
+          <Route path="/coffees/:slug" component={CoffeeDetails} />
+          <Route path="/coffees" component={Coffees} />
+          <Route path="/" component={Main} />
 
           </Switch>
         </section>
