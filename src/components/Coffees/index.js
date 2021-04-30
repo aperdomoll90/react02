@@ -1,46 +1,33 @@
-import React from 'react';
+import React from 'react'
+import SingleCoffee from './SingleCoffee'
 
-//function Coffees(){
-//    return (
-//    <section>
-//    This is Functional Components Coffees
-//    </section>
-//    )
-//}
-
-class Coffees extends React.Component {
+class Coffees extends React.Component{
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      data: [],
-    };
+      coffees: []
+    }
   }
   componentDidMount() {
-    console.log('my component loaded painfully');
     fetch('https://api.sampleapis.com/coffee/hot')
-      .then((response) => response.json())
-      .then((dataReceived) => this.setState({ data: dataReceived }))
-      .catch();
+      .then(response => response.json())
+      .then(data => this.setState({ coffees: data}))
+      .catch(err => console.log(err))
   }
-
   render() {
-    console.log('this is the data', this.state.data);
+    const { coffees } = this.state
+    if(!coffees) {
+      return <h2>Loading</h2>
+    }
     return (
-      <section>
-        <ul className="allCoffees">
-          {this.state.data.map(item => {
-            return (
-              <li key={item.id}>
-                <h3>{item.title}</h3>
-                <span>{item.description}</span>
-                <image src="https://loremflickr.com/200/200/coffee" alt=""/>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-    );
+      <>
+        <h2>Coffees:</h2>
+        {coffees.map(coffee => {
+          return <SingleCoffee key={coffee.id} coffee={coffee} />
+        })}
+      </>
+    )
   }
 }
 
-export default Coffees;
+export default Coffees
