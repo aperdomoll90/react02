@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 function CoffeeDetails() {
+  const { type, id } = useParams();
+  const [thisCoffee, setThisCoffee] = useState(null);
+  useEffect(() => {
+    fetch(`https://api.sampleapis.com/coffee/${type}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const oneCoffee = data.find((coffee) => coffee.id == id);
+        setThisCoffee(oneCoffee);
+      })
+      .catch((err) => console.log(err));
+  }, [type, id]);
+
   return (
     <>
-      <h2>Latter</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero vitae
-        soluta, officiis odio ut repellendus maiores? Ab repellat sequi
-        similique dolor assumenda debitis sint dolorum maxime? Rerum, iure.
-        Debitis, eum.
-      </p>
-      <ul>
-        <li>Espresso</li>
-        <li>Steam Milk</li>
-        <li>Foamed Milk</li>
-      </ul>
+      {!thisCoffee ? (
+        <h2>Loading</h2>
+      ) : (
+        <>
+          <h2>{thisCoffee.title}</h2>
+          <p>{thisCoffee.description}</p>
+          <ul>
+            {thisCoffee.ingredients.map((ingred) => {
+              return <li>{ingred}</li>;
+            })}
+          </ul>
+        </>
+      )}
     </>
   );
 }

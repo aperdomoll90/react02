@@ -16,15 +16,19 @@ function App() {
         <header className="App-header">
           <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </header>
+
+
         <section className="main-section">
           <Switch>
            
-          <Route path="/coffees/:slug" component={CoffeeDetails} />
+          <Route path="/coffees/:type/:id" component={CoffeeDetails} />
           <Route path="/coffees" component={Coffees} />
           <Route path="/" component={Main} />
 
           </Switch>
         </section>
+
+
 
         <section>
         <Footer />
